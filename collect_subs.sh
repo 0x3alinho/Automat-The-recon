@@ -100,3 +100,13 @@ rm puredns_result.txt
 
 #collect sub sub domains
 #subfinder -dL all.txt -silent >> all.txt
+
+
+
+#uniq subs
+cat all.txt | sort -u >> all_subs.txt
+rm all.txt
+
+#filter
+cat all_subs.txt | httpx -o alive_links.txt
+cat alive_links.txt | grep -oP '(?<=://)[^/]+' >> alive_subs.txt
