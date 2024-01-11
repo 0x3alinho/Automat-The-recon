@@ -47,7 +47,7 @@ rm shodan_result.txt
         # run security Trails
 
 for i in $(cat scope.txt); do
-    curl -s --request GET --url "https://api.securitytrails.com/v1/domain/$i/subdomains?apikey=m1gy2rjKjd-EVpbacD2PPG4zEmCzdSpL" | jq -r '.subdomains[]' | sed "s/$/.$i/" >> trials.txt                                                                                                                                   
+    curl -s --request GET --url "https://api.securitytrails.com/v1/domain/$i/subdomains?apikey=m1gy2rjKjd-EVpbacD2PPG4zEmCzdSpL" | jq -r '.subdomains[]' | sed "s/$/.$i/" >> trials.txt                                                                                                                                                                                                                                             
 done
 
 cat trials.txt | sort -u >> all.txt
